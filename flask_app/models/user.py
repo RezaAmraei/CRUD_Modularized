@@ -26,3 +26,21 @@ class User:
     def save(cls, data):
         query = "INSERT INTO users (f_name, l_name, email, created_at, updated_at) VALUES (%(f_name)s, %(l_name)s, %(email)s, NOW(), NOW());"
         return connectToMySQL('CRUD_MODULARIZED').query_db(query, data)
+
+    @classmethod
+    def get_one(cls,data):
+        query  = "SELECT * FROM users WHERE id = %(id)s;"
+        print(query)
+        result = connectToMySQL('CRUD_MODULARIZED').query_db(query,data)
+        return cls(result[0])
+
+    @classmethod
+    def update(cls,data):
+        query = "UPDATE users SET f_name = %(f_name)s, l_name = %(l_name)s, email = %(email)s, updated_at = NOW() WHERE id = %(id)s;"
+
+        return connectToMySQL('CRUD_MODULARIZED').query_db(query,data)
+    
+    @classmethod
+    def destroy(cls,data):
+        query  = "DELETE FROM users WHERE id = %(id)s;"
+        return connectToMySQL('CRUD_MODULARIZED').query_db(query,data)

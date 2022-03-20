@@ -12,6 +12,12 @@
     <p>First Name: {{one_user.f_name}}</p>
     <p>Last Name: {{one_user.l_name}}</p>
     <p>email: {{one_user.email}}</p>
+    <p>created at : {{one_user.created_at}}</p>
+    <p>
+      <a href="/users/show/{{one_user.id}}">Show</a> ||
+      <a href="/user/edit/{{one_user.id}}">Edit</a> ||
+      <a href="/users/destroy/{{one_user.id}}">Delete</a>
+    </p>
     <hr />
     {% endfor %}
     <a href="http://localhost:5000/create">
